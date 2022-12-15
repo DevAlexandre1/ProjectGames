@@ -35,6 +35,9 @@ function App() {
       setGameStage(stages[2].name)
     }
 
+    const retry  = () =>{
+      setGameStage(stages[0].name)
+    }
 
 
 
@@ -42,7 +45,7 @@ function App() {
     <div className="App">
       {gameStage === "start" && <StartScreen startGame={startGame}/>}
       {gameStage === "game" && <Game verifyLetter={verifyLetter} />}
-      {gameStage === "end" && <GameOver/>}
+      {gameStage === "end" && <GameOver retry ={retry}/>}
     </div>
   );
 }

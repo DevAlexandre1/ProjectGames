@@ -2,11 +2,11 @@ import React from "react"
 import "./GameOver.css"
 
 
-const GameOver = ({startGame}) => {
+const GameOver = ({retry}) => {
   return (
     <div>
         <h1>Game over</h1>
-        <button onClick={startGame}>Novo jogo!</button>
+        <button onClick={retry}>Novo jogo!</button>
     </div>
   )
 }
