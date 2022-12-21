@@ -64,6 +64,8 @@ function App() {
       console.log(wordLetters)
 
       setGameStage(stages[1].name)
+      setGuesses(5)
+      setWrongLetters([])
 
       //Setando os estados
       setPickedWord(word)
@@ -83,14 +85,21 @@ function App() {
         if(letters.includes(normalizedLetter)){
           setGuessedLetters((actualGuessedLetters)=> [
             ...actualGuessedLetters,normalizedLetter,
+            setScore(+100)
           ])
 
         }else{
           setWrongLetters((actualWrongLetters)=>[
             ...actualWrongLetters, normalizedLetter
           ])
+         
+          setGuesses(guesses - 1)
+          console.log(guesses)
         }
+        if(guesses < 2){
+          setGameStage(stages[2].name)
 
+        }
       }
       
       console.log(guessedLetters)
