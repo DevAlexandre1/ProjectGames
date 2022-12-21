@@ -25,7 +25,7 @@ function App() {
   const [gameStage, setGameStage]= useState(stages[0].name);
   const [words]= useState(wordsList);
 
-  const [piickedWord,setPickdWord] = useState("");
+  const [pickedWord,setPickedWord] = useState("");
   const [pickedCategory, setPickedCategory] = useState("");
   const [letters, setLetters] = useState([]);
 
@@ -36,20 +36,33 @@ function App() {
     //math.floor vai arredondar o numero random para baixo
     const category = categories[Math.floor(Math.random() * Object.keys(categories).length)]
 
-    console.log(category)
+   
     //Pegando uma palavra aleatoria
     const word = words[category][Math.floor(Math.random() * words[category].length)]
 
-    console.log(word)
-
+    
+    return {word, category}
   }
 
 
     const startGame = ()=>{
 
       //pega uma palavra e uma categoria aleatoria
-      pickWordAndCategory()
+      const {word, category}=pickWordAndCategory()
+      console.log(word,category)
+
+      //Criando a fila de letras
+      let wordLetters = word.split("")
+      wordLetters = wordLetters.map((l) => l.toLowerCase())
+      console.log(wordLetters)
+
       setGameStage(stages[1].name)
+
+      //Setando os estados
+      setPickedWord(word)
+      setPickedCategory(category)
+      setLetters(letters)
+
     }
 
 
